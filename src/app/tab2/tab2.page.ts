@@ -24,14 +24,10 @@ export class Tab2Page implements OnInit {
 
   setEventForAddFiles: any;
 
-  constructor(private blobService: AzureBlobStorageService) {
-
-  }
+  constructor(private blobService: AzureBlobStorageService) {}
 
   ngOnInit(): void {
     this.reloadImages();
-
-    
   }
 
   public setSas(event) {
