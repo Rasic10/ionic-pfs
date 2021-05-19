@@ -1,0 +1,40 @@
+<div class="form-container">
+  <div class="card">
+    <div class="imgcontainer">
+      <img
+        src="../../assets/login-page/avatar.png"
+        alt="Avatar"
+        class="avatar"
+      />
+    </div>
+
+    <div class="container">
+      <label for="username"><b>Username</b></label>
+      <input
+        type="text"
+        placeholder="Enter Username"
+        name="username"
+        [(ngModel)]="username"
+        required
+      />
+
+      <label for="psw"><b>Password</b></label>
+      <input
+        type="password"
+        placeholder="Enter Password"
+        name="psw"
+        [(ngModel)]="password"
+        required
+      />
+
+      <div class="buttons">
+        <button (click)="standardAuth()">Login</button>
+        <a href="www.google.rs"
+          ><img
+            src="../../assets/login-page/google-icon.svg"
+            alt="Google login"
+        /></a>
+      </div>
+    </div>
+  </div>
+</div>
