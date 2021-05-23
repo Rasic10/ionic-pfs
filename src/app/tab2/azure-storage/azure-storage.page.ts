@@ -16,6 +16,9 @@ export class AzureStoragePage implements OnInit {
 
   picturesList: string[] = [];
   picturesDownloaded: string[] = []
+  searchImageInput: string;
+  searchImage;
+  searchSpinner = false;
 
   videosList: string[] = [];
   videoDownloaded;
@@ -59,9 +62,9 @@ export class AzureStoragePage implements OnInit {
 
   private reloadImages() {
     this.blobService.listImages(this.sas).then(list => {
-      this.picturesList = list
-      const array = []
-      this.picturesDownloaded = array
+      this.picturesList = list;
+      const array = [];
+      this.picturesDownloaded = array;
 
       for (let name of this.picturesList) {
         this.blobService.downloadImage(this.sas, name, blob => {
@@ -73,5 +76,27 @@ export class AzureStoragePage implements OnInit {
         })
       }
     })
+  }
+
+  searchImages() {
+    this.searchSpinner = true;
+    if (!this.searchImageInput) {
+      return;
+    }
+
+    const array = [];
+    this.searchImage = array;
+
+    this.blobService.downloadImage(this.sas, this.searchImageInput, blob => {
+      var reader = new FileReader();
+      reader.readAsDataURL(blob);
+      reader.onloadend = function () {
+        array.push(reader.result as string);
+      }
+
+      this.searchSpinner = false;
+    })
+
+    
   }
 }

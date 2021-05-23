@@ -3,11 +3,24 @@
     justify-content: center;
     margin-top: 10px;
 
-    button {
+    .add-images {
         height: 30px; 
         width: 120px; 
         background-color: darkgreen;
         border-radius: 5px;
         
     }
+}
+
+.search {
+    width: 50px;
+    font-size: 23px;
+    background-color: #428cff;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.spinner {
+    display: flex;
+    margin: auto;
 }

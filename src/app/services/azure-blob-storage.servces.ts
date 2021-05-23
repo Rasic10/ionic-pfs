@@ -53,6 +53,8 @@ export class AzureBlobStorageService {
             resp.blobBody.then(blob => {
             handler(blob)
             })
+        }).catch(err => {
+            return "Error";
         })
     }
 
