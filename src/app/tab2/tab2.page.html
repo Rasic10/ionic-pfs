@@ -7,41 +7,25 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!-- <ion-header collapse="condense">
+  <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-tabs>
+        <ion-tab-bar slot="bottom">
+          <ion-tab-button (click)="openAzureTab()" [selected]="azureTab"> 
+            <ion-icon name="logo-microsoft"></ion-icon>
+            <ion-label>Azure Storage</ion-label>
+          </ion-tab-button>
+          <ion-tab-button (click)="openAwsTab()" [selected]="awsTab">
+            <ion-icon name="logo-amazon"></ion-icon>
+            <ion-label>AWS3</ion-label>
+          </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container> -->
+  <app-azure-storage *ngIf="azureTab"></app-azure-storage>
+  <app-aws3-storage *ngIf="awsTab"></app-aws3-storage>
 
-  <h2>Pictures with SAS</h2>
-  <table>
-    <tr>
-      <td></td><td><input type="file" accept="image/*" (change)="filesSelected($event)"></td>
-      <td>
-        <button style="height: 30px; width: 100px; background-color: dimgray;" 
-                (click)="imageSelected()">
-          Add picture
-        </button>
-      </td>
-    </tr>
-    <br>
-    <!-- <tr>
-      <td>Insert SAS:</td><td><input type="text" (change)="setSas($event)" size="90"></td>
-    </tr>
-    <tr>
-      <td>Current SAS:</td><td>{{sas}}</td>
-    </tr> -->
-  </table>
-  <h4>List</h4>
-  <table>
-    <tr *ngFor="let pic of picturesList">
-      <td>{{pic}}</td>
-      <td><button (click)="deleteImage(pic)">DELETE</button></td>
-      <td><button (click)="downloadImage(pic)" download="pic">DOWNLOAD</button></td>
-    </tr>
-  </table>
-  <h4>Downloaded</h4>
-  <img *ngFor="let blob of picturesDownloaded" src="{{ blob }}" height="100px">
+  
 </ion-content>

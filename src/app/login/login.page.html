@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-img class="image" src="https://www.nicepng.com/png/detail/202-2024687_profile-icon-for-the-politics-category-profile-icon.png"></ion-img>
+
+  <div>
+    <ion-input placeholder="Email" type="email" required>
+      <ion-icon class="icon icon-margin" name="mail-outline"></ion-icon>
+    </ion-input>
+    <ion-input placeholder="Password" type="password" required>
+      <ion-icon class="icon icon-margin" name="lock-closed-outline"></ion-icon>
+    </ion-input>  
+
+    <ion-button class="login" fill="clear" size="small" (click)="login()" expand="block">Login</ion-button>
+  </div>
+
+  <!-- <ion-button fill="clear" size="small" expand="block" routerLink="/register">Register</ion-button> -->
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <p class="register" routerLink="/register">No Account? Sign up for free</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="line" size="5"></ion-col>
+      <ion-col class="textInLine" size="2"> Or </ion-col>
+      <ion-col class="line" size="5"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div>
+    <ion-button fill="clear" size="small" class="facebookButton" (click)="loginWithFacebook()" expand="block">
+      <ion-icon class="icon" name="logo-facebook"></ion-icon>
+      Facebook
+    </ion-button>
+    <ion-button fill="clear" size="small" class="googleButton" (click)="loginWithGoogle()" expand="block">
+      <ion-icon class="icon" name="logo-google"></ion-icon>
+      Google
+    </ion-button>
+  </div>
+</ion-content>

@@ -7,6 +7,8 @@ import { Tab2Page } from './tab2.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
+import { AzureStoragePage } from './azure-storage/azure-storage.page';
+import { AWS3StoragePage } from './aws3-storage/aws3-storage.page';
 
 @NgModule({
   imports: [
@@ -16,6 +18,6 @@ import { Tab2PageRoutingModule } from './tab2-routing.module';
     ExploreContainerComponentModule,
     Tab2PageRoutingModule
   ],
-  declarations: [Tab2Page]
+  declarations: [Tab2Page, AzureStoragePage, AWS3StoragePage]
 })
 export class Tab2PageModule {}

@@ -1,20 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { AzureBlobStorageService } from '../services/azure-blob-storage.servces';
+import { AzureBlobStorageService } from '../../services/azure-blob-storage.servces';
 
 interface HTMLInputEvent extends Event {
   target: HTMLInputElement & EventTarget;
 }
 
-
-
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  selector: 'app-azure-storage',
+  templateUrl: 'azure-storage.page.html',
+  styleUrls: ['azure-storage.page.scss']
 })
-export class Tab2Page implements OnInit {
-  azureTab = true;
-  awsTab = false;
+export class AzureStoragePage implements OnInit {
 
   sas = "sp=racwdl&st=2021-05-09T20:06:29Z&se=2021-09-30T04:06:29Z&spr=https&sv=2020-02-10&sr=c&sig=K37uymiq8gTtGo6odBBmy%2FtS8N14KCKasbYVIwoxqzQ%3D";
 
@@ -27,16 +23,6 @@ export class Tab2Page implements OnInit {
   setEventForAddFiles: any;
 
   constructor(private blobService: AzureBlobStorageService) {}
-
-  openAzureTab() {
-    this.azureTab = true;
-    this.awsTab = false;
-  }
-
-  openAwsTab() {
-    this.azureTab = false;
-    this.awsTab = true;
-  }
 
   ngOnInit(): void {
     this.reloadImages();

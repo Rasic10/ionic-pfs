@@ -1,0 +1,85 @@
+
+.content {
+    position: fixed;
+    margin-top: 100px;
+    margin-left: 40px;
+}
+
+.button-action {
+    margin-left: 5px;
+}
+
+.image {
+    width: 150px;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+ion-input {
+    margin-bottom: 10px;
+    // padding-left: 10px !important;
+    width: 225px;
+    background-color: whitesmoke;
+    color: black;
+    border-radius: 5px;
+    // text-align: center;
+    margin-left: 3px;
+}
+
+ion-button {
+    width: 225px;
+    background-color: white;
+    color: black;
+    font-size: 15px;
+    border-radius: 6px;
+}
+
+.login {
+    background-color: darkgray;
+}
+
+.register {
+    margin: 0px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.line {
+    border-bottom: 1px solid grey;
+    margin-bottom: 16px;
+}
+
+.textInLine {
+    text-align: center;
+}
+
+.facebookButton {
+    background-color: #3b5998;
+    border-radius: 6px;
+    color: cornsilk;
+    margin-bottom: 12px;
+    text-transform: none;
+}
+
+.googleButton {
+    background-color: #ea4335;
+    border-radius: 6px;
+    color: cornsilk;
+    text-transform: none;
+}
+
+.icon {
+    font-size: 23px;
+}
+
+.icon-margin {
+    margin-left: 5px;
+}
