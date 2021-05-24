@@ -1,8 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { PhotosService } from 'src/app/services/photos.services';
 import { AzureBlobStorageService } from '../../services/azure-blob-storage.servces';
 
 interface HTMLInputEvent extends Event {
   target: HTMLInputElement & EventTarget;
+}
+
+class Photo {
+  name: string;
+  fileSize: string;
+  resolution: string;
+  dateCreated: Date;
+  link: string;
+  clubId: string;
 }
 
 @Component({
@@ -22,10 +32,11 @@ export class AzureStoragePage implements OnInit {
 
   videosList: string[] = [];
   videoDownloaded;
+  photo: Photo = new Photo();
 
   setEventForAddFiles: any;
 
-  constructor(private blobService: AzureBlobStorageService) {}
+  constructor(private blobService: AzureBlobStorageService, private _photosService: PhotosService) {}
 
   ngOnInit(): void {
     this.reloadImages();
@@ -41,9 +52,22 @@ export class AzureStoragePage implements OnInit {
 
   public imageSelected() {
     var file = (this.setEventForAddFiles as HTMLInputEvent).target.files[0];
+    
+    // this.photo = new Photo()
+    this.photo.clubId = "b529031a-69eb-4684-af54-fa9e425e45a1";
+    this.photo.dateCreated = new Date();
+    this.photo.fileSize = "256kb";
+    this.photo.name = "slika 2";
+    this.photo.resolution = "15x15";
+    this.photo.link = "link";
+     
+    this._photosService.postPhoto(this.photo).subscribe(res => {
+      console.log(res);
+    })
 
     this.blobService.uploadImage(this.sas, file, file.name, () => {
       this.reloadImages()
+
     })
   }
 

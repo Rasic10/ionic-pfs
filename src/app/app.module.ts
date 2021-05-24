@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
@@ -16,7 +17,7 @@ import { AuthenticationGuardService } from './services/auth-guard/authentication
 @NgModule({
   declarations: [AppComponent, LoginPageComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, IonicStorageModule.forRoot() ],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, IonicStorageModule.forRoot(), HttpClientModule ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AuthenticationService, AuthenticationGuardService],
   bootstrap: [AppComponent],
 })
