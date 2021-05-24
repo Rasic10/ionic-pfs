@@ -1,8 +1,11 @@
+<h1>Azure Storage</h1>
 <!-- <h2>Pictures with SAS</h2> -->
-<br>
+<br />
 <table>
   <tr>
-    <td><input type="file" accept="image/*" (change)="filesSelected($event)"></td>
+    <td>
+      <input type="file" accept="image/*" (change)="filesSelected($event)" />
+    </td>
   </tr>
   <!-- <tr>
     <td>Insert SAS:</td><td><input type="text" (change)="setSas($event)" size="90"></td>
@@ -12,23 +15,45 @@
   </tr> -->
 </table>
 <div class="button">
-  <button class="add-images" (click)="imageSelected()">
-    Add images
-  </button>
+  <button class="add-images" (click)="imageSelected()">Add images</button>
 </div>
 <h4>List images</h4>
 <table>
   <tr *ngFor="let pic of picturesList">
-    <td>&nbsp;<ion-icon style="color: green; font-size: 23px;" name="download-outline" (click)="downloadImage(pic)"></ion-icon></td>
+    <td>
+      &nbsp;<ion-icon
+        style="color: green; font-size: 23px"
+        name="download-outline"
+        (click)="downloadImage(pic)"
+      ></ion-icon>
+    </td>
     <!-- <td><button (click)="downloadImage(pic)" download="pic">DOWNLOAD</button></td> -->
-    <td>&nbsp;<ion-icon style="color: red; font-size: 23px;" name="trash-outline" (click)="deleteImage(pic)"></ion-icon></td>
+    <td>
+      &nbsp;<ion-icon
+        style="color: red; font-size: 23px"
+        name="trash-outline"
+        (click)="deleteImage(pic)"
+      ></ion-icon>
+    </td>
     <!-- <td><button (click)="deleteImage(pic)">DELETE</button></td> -->
     <td>&nbsp;&nbsp;{{pic}}</td>
   </tr>
 </table>
 
 <div class="button">
-  <ion-input type="text" [(ngModel)]="searchImageInput" style="color: black; padding-left: 10px !important; flex: none; width: 207px; background-color: floralwhite; border-top-left-radius: 5px; border-bottom-left-radius: 5px;"></ion-input>
+  <ion-input
+    type="text"
+    [(ngModel)]="searchImageInput"
+    style="
+      color: black;
+      padding-left: 10px !important;
+      flex: none;
+      width: 207px;
+      background-color: floralwhite;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    "
+  ></ion-input>
   <button class="search" (click)="searchImages()">
     <ion-icon name="search-outline"></ion-icon>
   </button>
@@ -36,6 +61,11 @@
 
 <ion-spinner *ngIf="searchSpinner" class="spinner" name="dots"></ion-spinner>
 
-<img *ngFor="let blob of searchImage" src="{{ blob }}" height="100px" style="display: flex; margin: auto; margin-top: 10px;">
+<img
+  *ngFor="let blob of searchImage"
+  src="{{ blob }}"
+  height="100px"
+  style="display: flex; margin: auto; margin-top: 10px"
+/>
 <!-- <h4>Downloaded</h4>
 <img *ngFor="let blob of picturesDownloaded" src="{{ blob }}" height="100px"> -->
