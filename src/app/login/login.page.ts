@@ -14,14 +14,14 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    this._authService.login();
+    this._authService.login('');
   }
 
   loginWithFacebook() {
-    this._authService.login();
+    this._authService.external_login('facebook');
   }
 
   loginWithGoogle() {
-    this._authService.login();
+    this._authService.external_login('google');
   }
 }

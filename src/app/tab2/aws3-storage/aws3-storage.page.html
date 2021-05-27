@@ -8,5 +8,22 @@
   </tr>
 </table>
 <div class="button">
-  <button class="add-images" (click)="imageSelected()">Add images</button>
+  <button class="add-images" (click)="imageSelected()">Add image</button>
 </div>
+
+<h4>List images</h4>
+<table>
+  <tr *ngFor="let pic of picturesList">
+    <td>
+      &nbsp;<ion-icon
+        style="color: red; font-size: 23px"
+        name="trash-outline"
+        (click)="deleteImage(pic)"
+      ></ion-icon>
+    </td>
+    <!-- <td><button (click)="deleteImage(pic)">DELETE</button></td> -->
+    <td>
+      &nbsp;&nbsp;<img [src]="pic.link" style="width: 50vw; margin: 0 auto" />
+    </td>
+  </tr>
+</table>

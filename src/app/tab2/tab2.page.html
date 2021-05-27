@@ -1,31 +1,25 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-title> Tab 2 </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-tabs>
-        <ion-tab-bar slot="bottom">
-          <ion-tab-button (click)="openAzureTab()" [selected]="azureTab"> 
-            <ion-icon name="logo-microsoft"></ion-icon>
-            <ion-label>Azure Storage</ion-label>
-          </ion-tab-button>
-          <ion-tab-button (click)="openAwsTab()" [selected]="awsTab">
-            <ion-icon name="logo-amazon"></ion-icon>
-            <ion-label>AWS3</ion-label>
-          </ion-tab-button>
-        </ion-tab-bar>
-      </ion-tabs>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar>
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button (click)="openAzureTab()" [selected]="azureTab">
+          <ion-icon name="logo-microsoft"></ion-icon>
+          <ion-label>Azure Storage</ion-label>
+        </ion-tab-button>
+        <ion-tab-button (click)="openAwsTab()" [selected]="awsTab">
+          <ion-icon name="logo-amazon"></ion-icon>
+          <ion-label>AWS3</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-toolbar>
 
   <app-azure-storage *ngIf="azureTab"></app-azure-storage>
   <app-aws3-storage *ngIf="awsTab"></app-aws3-storage>
-
-  
 </ion-content>
