@@ -15,28 +15,43 @@
   </tr> -->
 </table>
 <div class="button">
-  <button class="add-images" (click)="imageSelected()">Add images</button>
+  <button class="add-images" (click)="imageSelected()">Add image</button>
 </div>
 <h4>List images</h4>
 <table>
   <tr *ngFor="let pic of picturesList">
     <td>
+      <ion-chip>
+        <ion-icon
+          style="color: green; font-size: 23px"
+          name="download-outline"
+          (click)="downloadImage(pic)"
+        ></ion-icon>
+        <ion-icon
+          style="color: red; font-size: 23px"
+          name="trash-outline"
+          (click)="deleteImage(pic)"
+        ></ion-icon>
+        &nbsp;<ion-label>{{ pic }}</ion-label>
+      </ion-chip>
+    </td>
+    <!-- <td>
       &nbsp;<ion-icon
         style="color: green; font-size: 23px"
         name="download-outline"
         (click)="downloadImage(pic)"
       ></ion-icon>
-    </td>
+    </td> -->
     <!-- <td><button (click)="downloadImage(pic)" download="pic">DOWNLOAD</button></td> -->
-    <td>
+    <!-- <td>
       &nbsp;<ion-icon
         style="color: red; font-size: 23px"
         name="trash-outline"
         (click)="deleteImage(pic)"
       ></ion-icon>
-    </td>
+    </td> -->
     <!-- <td><button (click)="deleteImage(pic)">DELETE</button></td> -->
-    <td>&nbsp;&nbsp;{{pic}}</td>
+    <!-- <td>&nbsp;&nbsp;{{pic}}</td> -->
   </tr>
 </table>
 

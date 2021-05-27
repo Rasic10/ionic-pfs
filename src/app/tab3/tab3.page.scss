@@ -1,0 +1,23 @@
+.div {
+    display: flex;
+    justify-content: center;
+    
+    .button {
+        width: 150px;
+        font-size: 17px;
+
+        .icon {
+            font-size: 30px;
+        }
+    }
+}
+
+.dateLabel {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.timeLabel {
+    display: flex;
+    justify-content: flex-start;
+}
