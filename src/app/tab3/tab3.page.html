@@ -1,17 +1,25 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Tab 3</ion-title>
     </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <div class="div">
+    <ion-button class="button" (click)="openModal()">Add reservation</ion-button>
+  </div>
+
+  <!-- <app-explore-container name="Tab 3 page"></app-explore-container> -->
+
+  <ion-card *ngFor="let item of reservations">
+    <ion-item>
+      <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+      <ion-label>{{ item.clubReservationComment }}</ion-label>
+      <!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+    </ion-item>
+  
+    <ion-card-content>
+      <ion-label class="timeLabel">{{ item.startTime | date:'shortTime' }} - {{ item.finishTime | date:'shortTime' }}</ion-label>
+      <ion-label class="dateLabel">{{ item.timeOfCreation | date:'mediumDate' }}</ion-label>
+    </ion-card-content>
+  </ion-card>
+  
 </ion-content>

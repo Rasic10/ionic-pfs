@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title size="">Book reservation</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-item>
+    <ion-label position="floating">First Name and Last Name</ion-label>
+    <ion-input [(ngModel)]="reservation.clubReservationComment"></ion-input>
+</ion-item>
+
+<ion-item>
+    <ion-label position="floating">Date</ion-label>
+    <ion-datetime [(ngModel)]="reservation.timeOfCreation" displayFormat="DD/MM/YYYY" min="2000-03-14" max="2030-12-09"></ion-datetime>
+</ion-item>
+
+<ion-item>
+    <ion-label>Start Time</ion-label>
+    <ion-datetime [(ngModel)]="reservation.startTime" displayFormat="HH:mm" minuteValues="0,15,30,45"></ion-datetime>
+</ion-item>
+
+<ion-item>
+    <ion-label>Finish Time</ion-label>
+    <ion-datetime [(ngModel)]="reservation.finishTime" displayFormat="h:mm A" minuteValues="0,15,30,45"></ion-datetime>
+</ion-item>
+
+<div class="div">
+    <ion-button class="button" color="danger" (click)="closeModal()">
+        <ion-icon class="icon" name="close-circle-outline"></ion-icon>
+    </ion-button>
+    <ion-button class="button" color="success" (click)="addReservation()">
+        <ion-icon class="icon" name="checkmark-circle-outline"></ion-icon>
+    </ion-button>
+</div>
