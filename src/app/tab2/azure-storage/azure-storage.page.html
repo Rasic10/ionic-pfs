@@ -1,10 +1,10 @@
-<h1>Azure Storage</h1>
+<!-- <h1>Azure Storage</h1> -->
 <!-- <h2>Pictures with SAS</h2> -->
 <br />
 <table>
   <tr>
     <td>
-      <input type="file" accept="image/*" (change)="filesSelected($event)" />
+      &nbsp;<input type="file" accept="image/*" (change)="filesSelected($event)" />
     </td>
   </tr>
   <!-- <tr>
@@ -17,16 +17,17 @@
 <div class="button">
   <button class="add-images" (click)="imageSelected()">Add image</button>
 </div>
-<h4>List images</h4>
+<h4 style="margin-left: 10px;">List images</h4>
+<hr>
 <table>
   <tr *ngFor="let pic of picturesList">
     <td>
       <ion-chip>
-        <ion-icon
+        <!-- <ion-icon
           style="color: green; font-size: 23px"
           name="download-outline"
           (click)="downloadImage(pic)"
-        ></ion-icon>
+        ></ion-icon> -->
         <ion-icon
           style="color: red; font-size: 23px"
           name="trash-outline"

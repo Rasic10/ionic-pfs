@@ -2,12 +2,35 @@ import { Component } from '@angular/core';
 import { Plugins, CameraResultType, FilesystemDirectory, Capacitor, CameraSource, CameraPhoto }  from '@capacitor/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AzureBlobStorageService } from '../services/azure-blob-storage.servces';
+import { ClubsService } from '../services/club.service';
+import { AwsStorageService } from '../services/aws-storage.services';
 
 const { Camera, Filesystem, Storage } = Plugins;
 
 export interface Photo {
   filepath: string;
   webviewPath: string;
+}
+
+export class Club {
+  name: string;
+  description: Date;
+  priceRange: Date;
+  workingHours: WorkingHours[];
+}
+
+export class WorkingHours {
+  dateFrom: Date;
+  dateTo: Date;
+} 
+
+class Picture {
+  name: string;
+  fileSize: string;
+  resolution: string;
+  dateCreated: Date;
+  link: string;
+  clubId: string;
 }
 
 @Component({
@@ -20,9 +43,30 @@ export class Tab1Page {
   sas = "sp=racwdl&st=2021-05-09T20:06:29Z&se=2021-09-30T04:06:29Z&spr=https&sv=2020-02-10&sr=c&sig=K37uymiq8gTtGo6odBBmy%2FtS8N14KCKasbYVIwoxqzQ%3D";
   photos: Photo[] = [];
   PHOTO_STORAGE: string = "photos";
+  club: Club;
+  picturesList: Picture[] = [];
 
   constructor(private sanitizer: DomSanitizer,
-              private blobService: AzureBlobStorageService) {}
+              private blobService: AzureBlobStorageService,
+              private _clubsService: ClubsService,
+              private awsService: AwsStorageService) 
+  {
+    _clubsService.getClubById('b529031a-69eb-4684-af54-fa9e425e45a1').subscribe(res => {
+      this.club = res;
+      console.log(res);
+    });
+  }
+
+  ngOnInit(): void {
+    this.reloadImages();
+  }
+
+  private reloadImages() {
+    this.awsService.getImages().subscribe(list => {
+      console.log(list)
+      this.picturesList = list;
+    })
+  }
 
   public async takePicture() {
     const capturedPhoto = await Camera.getPhoto({

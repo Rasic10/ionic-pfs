@@ -56,10 +56,10 @@ export class AzureStoragePage implements OnInit {
     // this.photo = new Photo()
     this.photo.clubId = "b529031a-69eb-4684-af54-fa9e425e45a1";
     this.photo.dateCreated = new Date();
-    this.photo.fileSize = "256kb";
-    this.photo.name = "slika 2";
+    this.photo.fileSize = file.size + " B";
+    this.photo.name = file.name;
     this.photo.resolution = "15x15";
-    this.photo.link = "link";
+    this.photo.link = "https://ngblobs.blob.core.windows.net/pictures/" + file.name;
      
     this._photosService.postPhoto(this.photo).subscribe(res => {
       console.log(res);

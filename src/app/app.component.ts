@@ -18,7 +18,7 @@ export class AppComponent {
       this._authService.authenitcationState.subscribe(state => {
         console.log("changed auth state: " + state);
         if (state) {
-          this._router.navigate(['tabs', 'reservation']);
+          this._router.navigate(['tabs', 'club']);
         } else {
           console.log(this._router);
           this._router.navigate(['login']);
