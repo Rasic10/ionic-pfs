@@ -4,6 +4,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AzureBlobStorageService } from '../services/azure-blob-storage.servces';
 import { ClubsService } from '../services/club.service';
 import { AwsStorageService } from '../services/aws-storage.services';
+import { PhotosService } from '../services/photos.services';
 
 const { Camera, Filesystem, Storage } = Plugins;
 
@@ -45,11 +46,13 @@ export class Tab1Page {
   PHOTO_STORAGE: string = "photos";
   club: Club;
   picturesList: Picture[] = [];
+  picture: Picture = new Picture();
 
   constructor(private sanitizer: DomSanitizer,
               private blobService: AzureBlobStorageService,
               private _clubsService: ClubsService,
-              private awsService: AwsStorageService) 
+              private awsService: AwsStorageService,
+              private _photosService: PhotosService) 
   {
     _clubsService.getClubById('b529031a-69eb-4684-af54-fa9e425e45a1').subscribe(res => {
       this.club = res;
@@ -105,6 +108,17 @@ export class Tab1Page {
     const blob = await response.blob();
 
     const fileName = new Date().getTime() + '.' + cameraPhoto.format;
+
+    this.picture.clubId = "b529031a-69eb-4684-af54-fa9e425e45a1";
+    this.picture.dateCreated = new Date();
+    this.picture.fileSize = blob.size + " B";
+    this.picture.name = fileName;
+    this.picture.resolution = "15x15";
+    this.picture.link = "https://ngblobs.blob.core.windows.net/pictures/" + fileName;
+     
+    this._photosService.postPhoto(this.picture).subscribe(res => {
+      console.log(res);
+    })
 
     this.blobService.uploadImage(this.sas, blob, fileName, () => {
       console.log("upload image corectly");
