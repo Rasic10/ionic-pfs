@@ -1,3 +1,4 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BlobServiceClient, ContainerClient } from '@azure/storage-blob';
 
@@ -9,7 +10,7 @@ export class AzureBlobStorageService {
     picturesAccount = "ngblobs";
     picturesContainer = "pictures";
 
-    constructor() {
+    constructor(private http: HttpClient) {
 
     }
 
@@ -26,8 +27,10 @@ export class AzureBlobStorageService {
     }
 
     public deleteImage(sas: string, name: string, handler: () => void) {
-        this.deleteBlob(name, this.containerClient(sas), handler)
+        this.deleteBlob(name, this.containerClient(sas), handler);
+        return this.http.delete(`https://localhost:5001/api/Storage/${name}`);
     }
+    
     // -IMAGES
 
     private uploadBlob(content: Blob, name: string, client: ContainerClient, handler: () => void) {
