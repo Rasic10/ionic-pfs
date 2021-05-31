@@ -20,10 +20,11 @@ export class AwsStorageService {
     public uploadImage(file : File){
         let formData = new FormData();
         formData.append('file', file);
-        let request = new XMLHttpRequest();
-        request.open("POST", "https://localhost:5001/aws/upload");
-        request.send(formData);
+        // let request = new XMLHttpRequest();
+        // request.open("POST", "https://localhost:5001/aws/upload");
+        // request.send(formData);
         // return this.http.post("https://localhost:5001/aws/upload", file);
+        return this.http.post("https://localhost:5001/aws/upload", formData);
     }
 
     public getImages() {

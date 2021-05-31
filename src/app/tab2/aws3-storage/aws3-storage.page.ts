@@ -38,8 +38,8 @@ export class AWS3StoragePage {
     var file = (this.setEventForAddFiles as HTMLInputEvent).target.files[0];
 
     console.log('file ', file);
-    this.awsService.uploadImage(file);
-    this.reloadImages();
+    this.awsService.uploadImage(file).subscribe(() => this.reloadImages());
+    // this.reloadImages();
   }
 
   deleteImage(photo : Photo) {
