@@ -14,16 +14,16 @@ export class AppComponent {
   }
 
   initializeApp() {
-    this._platform.ready().then(() => {
-      this._authService.authenitcationState.subscribe(state => {
-        console.log("changed auth state: " + state);
-        if (state) {
-          this._router.navigate(['tabs', 'club']);
-        } else {
-          console.log(this._router);
-          this._router.navigate(['login']);
-        }
-      })
-    })
+    // this._platform.ready().then(() => {
+    //   this._authService.authenitcationState.subscribe(state => {
+    //     console.log("changed auth state: " + state);
+    //     if (state) {
+    //       this._router.navigate(['tabs', 'club']);
+    //     } else {
+    //       console.log(this._router);
+    //       this._router.navigate(['login']);
+    //     }
+    //   })
+    // })
   }
 }

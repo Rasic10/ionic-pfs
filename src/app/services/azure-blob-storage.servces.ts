@@ -28,7 +28,7 @@ export class AzureBlobStorageService {
 
     public deleteImage(sas: string, name: string, handler: () => void) {
         this.deleteBlob(name, this.containerClient(sas), handler);
-        return this.http.delete(`https://localhost:5001/api/Storage/${name}`);
+        this.http.delete(`https://localhost:5001/api/Storage/${name}`).subscribe(res => console.log(res));
     }
     
     // -IMAGES
